@@ -1,0 +1,296 @@
+:root {
+    /* Основные цвета */
+    --primary-color: #d061ec;
+    --primary-dark: #8a2be2;
+    --primary-light: #e38df7;
+    --accent-color: #8a2be2;
+    --text-color: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.7);
+    --text-secondary: #b0b0b0;
+    
+    /* Фоновые цвета */
+    --bg-color: #0a0a14;
+    --bg-dark: #050510;
+    --bg-light: #10101a;
+    --bg-card: rgba(25, 25, 40, 0.7);
+    --bg-card-hover: rgba(35, 35, 50, 0.8);
+    
+    /* Градиенты */
+    --gradient-1: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    --gradient-2: linear-gradient(135deg, var(--primary-dark), var(--accent-color));
+    --gradient-text: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+    --gradient-border: linear-gradient(135deg, rgba(208, 97, 236, 0.5), rgba(138, 43, 226, 0.5));
+    --gradient-glow: radial-gradient(circle, rgba(208, 97, 236, 0.4) 0%, rgba(208, 97, 236, 0) 70%);
+    
+    /* Тени */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+    --shadow-inset: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 15px rgba(208, 97, 236, 0.5);
+    
+    /* Эффекты */
+    --blur-bg: blur(10px);
+    --blur-sm: blur(5px);
+    --blur-lg: blur(20px);
+    --backdrop: saturate(180%) blur(20px);
+    --glow-color: rgba(208, 97, 236, 0.8);
+    
+    /* Анимации */
+    --transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+    --transition-slow: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    /* Размеры и формы */
+    --border-radius: 12px;
+    --border-radius-lg: 20px;
+    --border-radius-xl: 30px;
+    --border-radius-pill: 9999px;
+}
+
+/* Сброс стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Общие стили */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Фиксированный фон с эффектом градиента */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(208, 97, 236, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 50% 50%, rgba(30, 10, 60, 0.9) 0%, rgba(10, 10, 20, 0.95) 100%);
+    z-index: -2;
+}
+
+/* Эффект "туманности" */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxmaWx0ZXIgaWQ9Im5vaXNlIj4KICAgIDxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjY1IiBudW1PY3RhdmVzPSIzIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIiAvPgogICAgPGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIgLz4KICA8L2ZpbHRlcj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjbm9pc2UpIiBvcGFjaXR5PSIwLjA1IiAvPgo8L3N2Zz4=');
+    opacity: 0.2;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Эффект "звездной пыли" */
+.stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    background-color: #ffffff;
+    border-radius: 50%;
+    animation: starPulse 3s infinite alternate;
+    z-index: -1;
+}
+
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), transparent);
+    backdrop-filter: var(--blur-sm);
+    z-index: 0;
+    pointer-events: none;
+    animation: floatBubble 20s infinite alternate ease-in-out;
+}
+
+/* Основной контейнер */
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Кнопки */
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: 'Montserrat', sans-serif;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Горизонтальный скролл-индикатор */
+.scroll-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: var(--gradient-1);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    box-shadow: 0 0 10px rgba(208, 97, 236, 0.5);
+}
+
+.scroll-indicator-visible {
+    opacity: 1;
+}
+
+/* Эффект подсветки курсора */
+.container {
+    position: relative;
+}
+
+.cursor-glow {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(208, 97, 236, 0.15) 0%, rgba(208, 97, 236, 0) 70%);
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    mix-blend-mode: screen;
+}
+
+/* Общие классы для анимаций */
+.animate-fade-in {
+    animation: fadeIn 0.8s forwards;
+}
+
+.animate-slide-in-left {
+    animation: slideInLeft 0.8s forwards;
+}
+
+.animate-slide-in-right {
+    animation: slideInRight 0.8s forwards;
+}
+
+.animate-zoom-in {
+    animation: zoomIn 0.8s forwards;
+}
+
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+/* Эффект свечения для границ */
+.glow-border {
+    position: relative;
+}
+
+.glow-border::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: inherit;
+    background: var(--gradient-border);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.glow-border:hover::before {
+    opacity: 1;
+}
+
+/* Эффект ряби для кнопок */
+.ripple-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple 0.8s linear;
+    pointer-events: none;
+}
+
+/* Эффект блеска для кнопок */
+.shine-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.shine-effect::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 100%
+    );
+    transform: translateX(-100%);
+    transition: none;
+}
+
+.shine-effect:hover::after {
+    transform: translateX(100%);
+    transition: transform 0.8s ease;
+}
+
+/* Эффект подсветки текста */
+.highlight {
+    position: relative;
+    display: inline-block;
+    color: var(--primary-light);
+    font-weight: 700;
+    z-index: 1;
+}
+
+.highlight::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to top, rgba(208, 97, 236, 0.2), transparent);
+    z-index: -1;
+    transform-origin: bottom;
+    transform: scaleY(1.2);
+} 

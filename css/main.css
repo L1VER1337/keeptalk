@@ -1,0 +1,269 @@
+/* Импорт всех стилей */
+@import 'variables.css';
+@import 'animations.css';
+@import 'header.css';
+@import 'hero.css';
+@import 'features.css';
+@import 'download.css';
+@import 'footer.css';
+
+/* Дополнительные стили для анимаций и эффектов */
+.cursor-glow {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(208, 97, 236, 0.15) 0%, transparent 70%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+    transition: background 0.3s ease;
+}
+
+section {
+    scroll-snap-align: start;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+html, body {
+    scroll-behavior: smooth;
+}
+
+.smooth-scroll {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+    scroll-behavior: smooth;
+}
+
+.star {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+/* Стили для анимации кнопок и интерактивных элементов */
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+.btn-primary, .btn-secondary, .btn-option {
+    transition: all 0.4s ease, transform 0.2s ease;
+}
+
+.shine-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.shine-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150%;
+    height: 150%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: translateX(-100%) rotate(25deg);
+    animation: none;
+    transition: transform 0.5s ease;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.shine-effect:hover::before {
+    animation: shineEffect 1s forwards;
+}
+
+.ripple-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+/* Стили для переключателя тем */
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.theme-toggle i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+/* Стили для прокрутки страницы */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-dark);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 3.2rem;
+    }
+    
+    .hero {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+    
+    .app-frame {
+        transform: none !important;
+        max-width: 360px;
+    }
+    
+    .feature-cards {
+        gap: 20px;
+    }
+    
+    .feature-card {
+        min-width: 220px;
+    }
+    
+    .download-option {
+        min-width: 280px;
+    }
+    
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        margin-top: 15px;
+    }
+    
+    h1 {
+        font-size: 2.8rem;
+    }
+    
+    .feature-card {
+        min-width: 200px;
+    }
+    
+    .footer-content {
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .footer-col h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .cursor-glow {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.4rem;
+    }
+    
+    .hero {
+        padding: 30px 15px;
+    }
+    
+    .nav-links {
+        gap: 15px;
+    }
+    
+    .feature-card, .download-option {
+        min-width: 100%;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn-primary, .btn-secondary {
+        width: 100%;
+    }
+    
+    .footer-links {
+        gap: 30px;
+    }
+    
+    .theme-toggle {
+        bottom: 10px;
+        right: 10px;
+    }
+}
+
+/* Стили для поддержки предпочтений движения */
+@media (prefers-reduced-motion) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .cursor-glow, .scroll-indicator {
+        display: none !important;
+    }
+} 

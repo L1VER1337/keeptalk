@@ -1,0 +1,145 @@
+.light-theme {
+    --primary-color: #a013c2;
+    --primary-light: #c45bdd;
+    --primary-dark: #7c0d9a;
+    --accent-color: #1390c2;
+    --accent-light: #5bc4dd;
+    --accent-dark: #0d7c9a;
+    --text-color: #333333;
+    --bg-color: #f5f5f9;
+    --bg-light: #ffffff;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f0f0f5;
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --shadow-strong: 0 10px 30px rgba(160, 19, 194, 0.2);
+    --shadow-accent: 0 10px 30px rgba(19, 144, 194, 0.2);
+}
+
+.light-theme body::before {
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(160, 19, 194, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(121, 19, 160, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 60% 20%, rgba(19, 144, 194, 0.05) 0%, transparent 40%),
+        var(--bg-color);
+}
+
+.light-theme .container::after {
+    opacity: 0.5;
+}
+
+.light-theme .container::before {
+    opacity: 0.7;
+}
+
+.light-theme header {
+    background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(160, 19, 194, 0.1);
+}
+
+.light-theme header:hover {
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+.light-theme .nav-links a {
+    color: #555;
+}
+
+.light-theme .btn-login {
+    color: var(--primary-dark);
+}
+
+.light-theme h1, .light-theme h2, .light-theme h3 {
+    color: #222;
+}
+
+.light-theme p {
+    color: #555;
+}
+
+.light-theme .highlight {
+    color: var(--primary-color);
+}
+
+.light-theme .feature-card p, .light-theme .download-option p {
+    color: #666;
+}
+
+.light-theme .feature-card, .light-theme .download-option {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.light-theme .app-content {
+    background: #f0f0f5;
+}
+
+.light-theme .received {
+    background: #e0e0e5;
+}
+
+.light-theme .received p {
+    color: #333;
+}
+
+.light-theme .typing-indicator {
+    background: #e0e0e5;
+}
+
+.light-theme .typing-indicator span {
+    background: #aaa;
+}
+
+.light-theme footer {
+    background-color: #f0f0f5;
+}
+
+.light-theme .footer-col h4 {
+    color: #333;
+}
+
+.light-theme .footer-col ul li a {
+    color: #666;
+}
+
+.light-theme .footer-bottom p {
+    color: #888;
+}
+
+.light-theme .social-links a {
+    color: #888;
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.light-theme ::-webkit-scrollbar-track {
+    background: #f0f0f5;
+}
+
+.light-theme ::-webkit-scrollbar-thumb {
+    background: var(--primary-dark);
+}
+
+.light-theme .cursor-glow {
+    background: radial-gradient(circle, rgba(160, 19, 194, 0.1) 0%, transparent 70%);
+}
+
+.light-theme .theme-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    opacity: 0.8;
+    z-index: 9999;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.light-theme .scroll-dot {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.light-theme .scroll-dot.active {
+    background-color: var(--primary-color);
+} 
